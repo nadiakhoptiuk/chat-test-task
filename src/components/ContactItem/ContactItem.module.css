@@ -1,0 +1,46 @@
+.contactItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  color: var(--main-text-color);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 200ms linear;
+}
+
+.contactItem:hover {
+  background-color: var(--selected-btn-color);
+  cursor: pointer;
+}
+
+.contactBtn {
+  padding: 10px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.selectedBtn {
+  composes: contactBtn;
+  background-color: var(--border-color);
+}
+
+.noneSelectedBtn {
+  composes: contactBtn;
+}
+
+@media screen and (min-width: 768px) {
+  .contactItem {
+    width: calc((100% - 2 * 10px) / 2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contactItem {
+    width: calc((100% - 2 * 20px) / 2);
+  }
+}
