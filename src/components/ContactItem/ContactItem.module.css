@@ -32,15 +32,3 @@
 .noneSelectedBtn {
   composes: contactBtn;
 }
-
-@media screen and (min-width: 768px) {
-  .contactItem {
-    width: calc((100% - 2 * 10px) / 2);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .contactItem {
-    width: calc((100% - 2 * 20px) / 2);
-  }
-}

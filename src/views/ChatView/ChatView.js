@@ -5,22 +5,22 @@ import Section from 'components/Section';
 import Container from 'components/Container';
 import ContactsList from 'components/ContactsList';
 import { useGetContactsQuery } from 'redux/contacts';
-import useLocalStorage from 'hooks/useLocalStorage';
 import { useEffect } from 'react';
 import Chat from 'components/Chat';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedContact } from 'redux/chat/chatActions';
+import { openedChat } from 'redux/chat/chatSelectors';
 
 export default function ChatView() {
   const { data, isFetching } = useGetContactsQuery();
-  const [selectedContact, setSelectedContact] = useLocalStorage(
-    'openedChat',
-    data ? data[0] : null
-  );
+  const dispatch = useDispatch();
+  const selectedContact = useSelector(openedChat);
 
   useEffect(() => {
     if (!isFetching && selectedContact === null) {
-      setSelectedContact(data[0]);
+      dispatch(setSelectedContact(data[0]));
     }
-  }, [selectedContact]);
+  }, [isFetching, selectedContact]);
 
   return (
     <>
@@ -36,12 +36,8 @@ export default function ChatView() {
           />
         ) : (
           <Container>
-            <ContactsList
-              data={data}
-              selectedContact={selectedContact}
-              setSelectedContact={setSelectedContact}
-            />
-            <Chat selectedContact={selectedContact} />
+            <ContactsList data={data} />
+            <Chat />
           </Container>
         )}
       </Section>

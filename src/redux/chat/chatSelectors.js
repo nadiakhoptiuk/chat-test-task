@@ -1,1 +1,1 @@
-// export const openedChat = state => state.chat;
+export const openedChat = state => state.openedChat;

@@ -1,3 +1,3 @@
-// import { createAction } from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
 
-// export const selectContact = createAction('chat/selectContact');
+export const setSelectedContact = createAction('chat/setSelectedContact');

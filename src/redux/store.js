@@ -9,31 +9,28 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { filterContactsReducer } from './filter/filterContactsReducer';
 import { contactsApi } from './contacts';
 import authReducer from './auth/authSlice';
-// import { openedChatReducer } from './chat/openedChatReducer';
+import { openedChatReducer } from './chat/openedChatReducer';
 
-const authPersistConfig = {
-  key: 'auth',
+const rootPersistConfig = {
+  key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['auth', 'openedChat'],
 };
 
-// const chatPersistConfig = {
-//   key: 'chat',
-//   storage,
-// };
+const rootReducer = combineReducers({
+  openedChat: openedChatReducer,
+  filter: filterContactsReducer,
+  auth: authReducer,
+  [contactsApi.reducerPath]: contactsApi.reducer,
+});
 
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    [contactsApi.reducerPath]: contactsApi.reducer,
-    filter: filterContactsReducer,
-    // openedChat: openedChatReducer,
-  },
+  reducer: persistReducer(rootPersistConfig, rootReducer),
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       thunk: {
@@ -50,4 +47,4 @@ export const store = configureStore({
 });
 
 setupListeners(store.dispatch);
-export const persistor = persistStore(store);
+export const persistore = persistStore(store);

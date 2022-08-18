@@ -2,24 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactItem.module.css';
 import { ContactInfoBox } from 'components/ContactInfoBox/ContactInfoBox';
+import { useDispatch, useSelector } from 'react-redux';
+import { openedChat } from 'redux/chat/chatSelectors';
+import { setSelectedContact } from 'redux/chat/chatActions';
 
-export default function ContactItem({
-  contactData,
-  selectedContact,
-  setSelectedContact,
-}) {
+export default function ContactItem({ contactData }) {
+  const selectedContact = useSelector(openedChat);
+  const dispatch = useDispatch();
+
   function checkIsContactSelected() {
-    return JSON.stringify(contactData) === JSON.stringify(selectedContact);
+    return (
+      JSON.stringify(contactData?.username) ===
+      JSON.stringify(selectedContact?.username)
+    );
   }
 
-  const IsContactSelected = checkIsContactSelected();
+  const isContactSelected = checkIsContactSelected();
 
   return (
     <li className={s.contactItem}>
       <button
         type="button"
-        onClick={() => setSelectedContact(contactData)}
-        className={IsContactSelected ? s.selectedBtn : s.noneSelectedBtn}
+        onClick={() => dispatch(setSelectedContact(contactData))}
+        className={isContactSelected ? s.selectedBtn : s.noneSelectedBtn}
       >
         <ContactInfoBox contactData={contactData} />
       </button>

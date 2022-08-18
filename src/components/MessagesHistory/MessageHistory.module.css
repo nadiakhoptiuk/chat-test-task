@@ -1,0 +1,17 @@
+.messageList {
+  width: 100%;
+}
+
+.message {
+  width: 50%;
+}
+
+.myMessage {
+  composes: message;
+  margin-left: auto;
+}
+
+.interlocutorMessage {
+  composes: message;
+  margin-right: auto;
+}

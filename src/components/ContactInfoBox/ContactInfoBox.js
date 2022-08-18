@@ -5,20 +5,20 @@ export function ContactInfoBox({ contactData }) {
     <>
       <div className={s.avatarWrapper}>
         <img
-          src={contactData.avatar}
-          alt={`${contactData.username} avatar`}
+          src={contactData?.avatar}
+          alt={`${contactData?.username} avatar`}
           className={s.avatar}
         />
         <div
           className={
-            contactData.isOnline
+            contactData?.isOnline
               ? s.statusIndicatorOnline
               : s.statusIndicatorOffline
           }
         ></div>
       </div>
 
-      <p className={s.contactName}>{contactData.username}</p>
+      <p className={s.contactName}>{contactData?.username}</p>
     </>
   );
 }

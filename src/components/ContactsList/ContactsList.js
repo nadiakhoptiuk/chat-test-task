@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ContactItem from 'components/ContactItem';
 import { filterSelector } from 'redux/filter/filterSelector';
@@ -7,11 +6,7 @@ import s from './ContactsList.module.css';
 import FilterInput from 'components/FilterInput';
 import Section from 'components/Section';
 
-export default function ContactsList({
-  data,
-  selectedContact,
-  setSelectedContact,
-}) {
+export default function ContactsList({ data }) {
   const filter = useSelector(filterSelector);
 
   const filterContacts = () => {
@@ -31,12 +26,7 @@ export default function ContactsList({
       <FilterInput />
       <ul className={s.contactsList}>
         {filteredContacts?.map(filteredContact => (
-          <ContactItem
-            key={filteredContact.id}
-            contactData={filteredContact}
-            selectedContact={selectedContact}
-            setSelectedContact={setSelectedContact}
-          />
+          <ContactItem key={filteredContact.id} contactData={filteredContact} />
         ))}
       </ul>
     </Section>

@@ -1,9 +1,8 @@
-// import { createReducer } from '@reduxjs/toolkit';
-// import { useSelector } from 'react-redux';
-// import { selectContact } from './chatActions';
+import { createReducer } from '@reduxjs/toolkit';
+import { setSelectedContact } from './chatActions';
 
-// export const openedChatReducer = createReducer(null, {
-//   [selectContact]: (_, { payload }) => {
-//     return payload;
-//   },
-// });
+export const openedChatReducer = createReducer(null, {
+  [setSelectedContact]: (_, { payload }) => {
+    return payload;
+  },
+});

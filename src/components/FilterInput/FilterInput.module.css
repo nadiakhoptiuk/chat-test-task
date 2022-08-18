@@ -1,7 +1,6 @@
 .inputLabel {
   width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   transition: all 200ms ease-in-out;
@@ -13,6 +12,8 @@
 }
 
 .filterInput {
+  width: 100%;
+  max-width: 300px;
   padding: 10px 20px;
   margin-top: 5px;
   margin-bottom: 20px;
