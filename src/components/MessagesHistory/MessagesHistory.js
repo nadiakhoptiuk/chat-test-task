@@ -9,13 +9,16 @@ export default function MessagesHistory() {
     <ul>
       {selectedContact?.messages?.map(
         ({ message, isSendedByMe, date }, index) => {
+          const newDate = new Date(date).toLocaleString();
+          console.log(newDate);
+
           return (
             <li
               key={index}
               className={isSendedByMe ? s.myMessage : s.interlocutorMessage}
             >
-              <p>{message}</p>
-              <span>{date}</span>
+              <p className={s.messageText}>{message}</p>
+              <span className={s.messageDate}>{newDate}</span>
             </li>
           );
         }

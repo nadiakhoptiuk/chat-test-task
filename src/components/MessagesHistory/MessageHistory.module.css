@@ -4,6 +4,7 @@
 
 .message {
   width: 50%;
+  margin: 20px 10px;
 }
 
 .myMessage {
@@ -14,4 +15,17 @@
 .interlocutorMessage {
   composes: message;
   margin-right: auto;
+}
+
+.messageText {
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  background-color: var(--border-color);
+  border-radius: 10px;
+}
+
+.messageDate {
+  font-size: 12px;
+  color: var(--border-color);
 }
