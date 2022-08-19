@@ -8,7 +8,7 @@ export default function Chat() {
   const selectedContact = useSelector(openedChat);
 
   return (
-    <Section title="Chat" isHidden={true}>
+    <Section title="Chat" isHidden={true} width="100%" flexShrink={1}>
       <ContactInfoBox contactData={selectedContact} />
       <MessagesHistory />
       {/* <form action=""></form> */}

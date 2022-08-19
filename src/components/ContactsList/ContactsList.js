@@ -22,7 +22,7 @@ export default function ContactsList({ data }) {
   const filteredContacts = filterContacts();
 
   return (
-    <Section title="Chats" isHidden={false}>
+    <Section title="Chats" isHidden={false} width="300px" flexShrink={0}>
       <FilterInput />
       <ul className={s.contactsList}>
         {filteredContacts?.map(filteredContact => (

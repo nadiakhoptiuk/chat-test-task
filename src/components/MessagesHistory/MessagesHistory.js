@@ -1,4 +1,4 @@
-import { compareAsc, format } from 'date-fns';
+import { format } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { openedChat } from 'redux/chat/chatSelectors';
 import s from './MessageHistory.module.css';
@@ -11,7 +11,7 @@ export default function MessagesHistory() {
   );
 
   return (
-    <ul>
+    <ul className={s.messageList}>
       {messageList.map(({ message, isSendedByMe, date }, index) => {
         const newDate = format(new Date(date), 'PP, p');
 

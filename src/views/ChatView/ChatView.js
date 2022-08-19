@@ -24,23 +24,21 @@ export default function ChatView() {
 
   return (
     <>
-      <Section title="Chat" isHidden={true}>
-        {isFetching ? (
-          <Watch
-            height={48}
-            width={48}
-            radius={45}
-            color="#1a75cfb3"
-            wrapperClass="loader"
-            ariaLabel="loading-indicator"
-          />
-        ) : (
-          <Container>
-            <ContactsList data={data} />
-            <Chat />
-          </Container>
-        )}
-      </Section>
+      {isFetching ? (
+        <Watch
+          height={48}
+          width={48}
+          radius={45}
+          color="#1a75cfb3"
+          wrapperClass="loader"
+          ariaLabel="loading-indicator"
+        />
+      ) : (
+        <Container>
+          <ContactsList data={data} />
+          <Chat />
+        </Container>
+      )}
     </>
   );
 }
