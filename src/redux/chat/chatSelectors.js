@@ -1,1 +1,1 @@
-export const openedChat = state => state.openedChat;
+export const selectedContactIdSelector = state => state.selectedContactId;

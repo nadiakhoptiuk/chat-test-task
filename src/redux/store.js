@@ -14,7 +14,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { filterContactsReducer } from './filter/filterContactsReducer';
 import { contactsApi } from './contacts';
 import authReducer from './auth/authSlice';
-import { openedChatReducer } from './chat/openedChatReducer';
+import { selectedContactIdReducer } from './chat/selectedContactIdReducer.js';
 
 const rootPersistConfig = {
   key: 'root',
@@ -23,7 +23,7 @@ const rootPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  openedChat: openedChatReducer,
+  selectedContactId: selectedContactIdReducer,
   filter: filterContactsReducer,
   auth: authReducer,
   [contactsApi.reducerPath]: contactsApi.reducer,

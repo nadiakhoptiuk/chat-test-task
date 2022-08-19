@@ -5,8 +5,10 @@ import { filterSelector } from 'redux/filter/filterSelector';
 import s from './ContactsList.module.css';
 import FilterInput from 'components/FilterInput';
 import Section from 'components/Section';
+import { useGetContactsQuery } from 'redux/contacts';
 
-export default function ContactsList({ data }) {
+export default function ContactsList() {
+  const { data } = useGetContactsQuery();
   const filter = useSelector(filterSelector);
 
   const filterContacts = () => {
@@ -26,7 +28,7 @@ export default function ContactsList({ data }) {
       <FilterInput />
       <ul className={s.contactsList}>
         {filteredContacts?.map(filteredContact => (
-          <ContactItem key={filteredContact.id} contactData={filteredContact} />
+          <ContactItem key={filteredContact.id} id={filteredContact.id} />
         ))}
       </ul>
     </Section>

@@ -2,11 +2,14 @@ import { GrSend } from 'react-icons/gr';
 import useFormFields from 'hooks/useFormFields';
 import s from './FormSendMessage.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { openedChat } from 'redux/chat/chatSelectors';
+import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
 import { useCallback, useEffect } from 'react';
 import getChuckResponce from 'service/chuckNorrisApi';
-import { useGetContactByIdQuery } from 'redux/contacts';
-import { setSelectedContact } from 'redux/chat/chatActions';
+import {
+  useAddMessageToContactMutation,
+  useGetContactByIdQuery,
+} from 'redux/contacts';
+// import { setSelectedContactId } from 'redux/chat/chatActions';
 
 export default function FormSendMessage({ id, messageList, setMessageList }) {
   const {
@@ -15,9 +18,10 @@ export default function FormSendMessage({ id, messageList, setMessageList }) {
     handleChange: handleMessageChange,
   } = useFormFields('');
   const { data } = useGetContactByIdQuery(id);
-  const dispatch = useDispatch();
+  const [addMessageToContact] = useAddMessageToContactMutation();
+  // const dispatch = useDispatch();
 
-  const selectedContact = useSelector(openedChat);
+  const selectedContact = useSelector(selectedContactIdSelector);
 
   const generateNewMessageList = useCallback(
     (message, bool) => {
@@ -32,11 +36,13 @@ export default function FormSendMessage({ id, messageList, setMessageList }) {
       );
       setMessageList(newList);
       console.log(messageList);
-
-      dispatch(setSelectedContact(data));
-      console.log(selectedContact);
+      addMessageToContact({
+        id: selectedContact.id,
+        contact: { ...selectedContact, messages: newList },
+      });
+      // dispatch(setSelectedContact());
     },
-    [selectedContact, setMessageList, messageList, dispatch, data]
+    [selectedContact, setMessageList, messageList, addMessageToContact]
   );
 
   const handleSubmit = evt => {
