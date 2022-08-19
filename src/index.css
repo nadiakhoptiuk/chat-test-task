@@ -13,6 +13,7 @@ html[theme-type='light'] {
   --main-text-color: #000000;
 
   --border-color: #d1d0d0;
+  --border-color-v2: #a8a7a7;
   --warning-color: #d44444b6;
   --edit-color: #d4b244;
   --accent-color: #2e7fcf;
@@ -26,6 +27,7 @@ html[theme-type='dark'] {
   --main-text-color: #fff;
 
   --border-color: #6e6d6d;
+  --border-color-v2: #29456e;
   --warning-color: #d44444b6;
   --edit-color: #d4b244;
   --accent-color: #56a0eb;

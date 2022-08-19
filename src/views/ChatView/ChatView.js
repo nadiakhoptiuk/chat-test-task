@@ -12,7 +12,10 @@ import { setSelectedContact } from 'redux/chat/chatActions';
 import { openedChat } from 'redux/chat/chatSelectors';
 
 export default function ChatView() {
-  const { data, isFetching } = useGetContactsQuery();
+  const { data, isFetching } = useGetContactsQuery('', {
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: true,
+  });
   const dispatch = useDispatch();
   const selectedContact = useSelector(openedChat);
 
@@ -24,21 +27,10 @@ export default function ChatView() {
 
   return (
     <>
-      {isFetching ? (
-        <Watch
-          height={48}
-          width={48}
-          radius={45}
-          color="#1a75cfb3"
-          wrapperClass="loader"
-          ariaLabel="loading-indicator"
-        />
-      ) : (
-        <Container>
-          <ContactsList data={data} />
-          <Chat />
-        </Container>
-      )}
+      <Container>
+        <ContactsList data={data} />
+        <Chat id={selectedContact.id} selectedContact={selectedContact} />
+      </Container>
     </>
   );
 }
