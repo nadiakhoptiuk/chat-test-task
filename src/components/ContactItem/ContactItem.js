@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import s from './ContactItem.module.css';
 import { ContactInfoBox } from 'components/ContactInfoBox/ContactInfoBox';
 import { useDispatch, useSelector } from 'react-redux';
