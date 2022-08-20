@@ -1,73 +1,76 @@
 import { GrSend } from 'react-icons/gr';
 import useFormFields from 'hooks/useFormFields';
 import s from './FormSendMessage.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
 import { useCallback, useEffect } from 'react';
 import getChuckResponce from 'service/chuckNorrisApi';
 import {
   useAddMessageToContactMutation,
-  useGetContactByIdQuery,
+  // useGetContactByIdQuery,
 } from 'redux/contacts';
-// import { setSelectedContactId } from 'redux/chat/chatActions';
 
-export default function FormSendMessage({ id, messageList, setMessageList }) {
+export default function FormSendMessage({
+  id,
+  setMessageList,
+  data,
+  messageList,
+}) {
   const {
     state: message,
     setState: setMessage,
     handleChange: handleMessageChange,
   } = useFormFields('');
-  const { data } = useGetContactByIdQuery(id);
   const [addMessageToContact] = useAddMessageToContactMutation();
-  // const dispatch = useDispatch();
-
-  const selectedContact = useSelector(selectedContactIdSelector);
 
   const generateNewMessageList = useCallback(
-    (message, bool) => {
+    async (message, bool) => {
       const newMessage = {
         message: message,
         date: new Date().toISOString(),
         isSendedByMe: bool,
       };
 
-      const newList = [...selectedContact.messages, newMessage].sort(
+      const newList = [...data?.messages, newMessage].sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
-      setMessageList(newList);
-      console.log(messageList);
-      addMessageToContact({
-        id: selectedContact.id,
-        contact: { ...selectedContact, messages: newList },
+      await setMessageList(newList);
+
+      await addMessageToContact({
+        id: id,
+        contact: { ...data, messages: newList },
       });
-      // dispatch(setSelectedContact());
     },
-    [selectedContact, setMessageList, messageList, addMessageToContact]
+    [addMessageToContact, data, id, setMessageList]
   );
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault();
 
     generateNewMessageList(message, true);
+
     setMessage('');
   };
 
-  useEffect(() => {
-    if (!messageList[messageList.length - 1].isSendedByMe) {
-      return;
-    } else {
-      setTimeout(() => {
-        getChuckResponce()
-          .then(message => {
-            generateNewMessageList(message, false);
-          })
-          .catch(error => {
-            // handle error
-            console.log(error);
-          });
-      }, 10000);
-    }
-  }, [generateNewMessageList, messageList, setMessageList]);
+  // useEffect(() => {
+  //   if (!messageList || !messageList[messageList?.length - 1].isSendedByMe) {
+  //     console.log('return');
+
+  //     return;
+  //   } else {
+  //     console.log('set time out');
+  //     setTimeout(() => {
+  //       getChuckResponce()
+  //         .then(message => {
+  //           generateNewMessageList(message, false);
+  //         })
+  //         .catch(error => {
+  //           // handle error
+  //           console.log(error);
+  //         });
+  //     }, 10000);
+  //   }
+  // }, [generateNewMessageList, messageList, setMessageList]);
 
   return (
     <div className={s.formWrapper}>

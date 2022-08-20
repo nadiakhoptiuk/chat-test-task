@@ -7,16 +7,19 @@ import { useEffect } from 'react';
 import Chat from 'components/Chat';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedContactId } from 'redux/chat/chatActions';
-import { useGetContactByIdQuery, useGetContactsQuery } from 'redux/contacts';
+import { useGetContactsQuery } from 'redux/contacts';
 // import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
 
 export default function ChatView() {
   const dispatch = useDispatch();
   const selectedContactId = useSelector(state => state.selectedContactId);
-  const { data, isFetching } = useGetContactsQuery();
-  console.log(data);
+  const { data, isFetching } = useGetContactsQuery('', {
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: true,
+  });
 
   useEffect(() => {
+    if (!data) return;
     if (!isFetching && selectedContactId === null) {
       dispatch(setSelectedContactId(data[0].id));
     }

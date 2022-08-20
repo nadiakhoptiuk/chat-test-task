@@ -7,5 +7,3 @@ export default function getChuckResponce() {
     url: BASE_URL,
   }).then(response => response.data.value);
 }
-
-console.log(getChuckResponce());

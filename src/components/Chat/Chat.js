@@ -13,9 +13,10 @@ import {
 
 export default function Chat({ id }) {
   const { data } = useGetContactByIdQuery(id);
+  console.log(id);
 
   useEffect(() => {
-    if (!data) {
+    if (!data || data?.messages?.length === 0) {
       return;
     } else {
       const sortArrayByDate = array => {
@@ -23,7 +24,6 @@ export default function Chat({ id }) {
       };
 
       const sortedArray = sortArrayByDate(data?.messages);
-      console.log(data.messages);
 
       messageListRef.current = sortedArray;
     }

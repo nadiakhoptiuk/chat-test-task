@@ -4,7 +4,7 @@ import s from './ContactInfoBox.module.css';
 export function ContactInfoBox({ id }) {
   const { data } = useGetContactByIdQuery(id);
 
-  return (
+  return data ? (
     <>
       <div className={s.avatarWrapper}>
         <img
@@ -21,5 +21,5 @@ export function ContactInfoBox({ id }) {
 
       <p className={s.contactName}>{data?.username}</p>
     </>
-  );
+  ) : null;
 }

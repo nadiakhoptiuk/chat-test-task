@@ -20,7 +20,7 @@ export default function FilterInput() {
 
   return (
     <>
-      {data?.length ? (
+      {data?.length > 0 ? (
         <label className={s.inputLabel}>
           <input
             className={s.filterInput}
@@ -31,9 +31,7 @@ export default function FilterInput() {
             placeholder="Search or start new chat"
           />
         </label>
-      ) : (
-        <p className={s.notification}>You haven't added any contact yet...</p>
-      )}
+      ) : null}
     </>
   );
 }

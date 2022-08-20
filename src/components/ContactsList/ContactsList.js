@@ -27,9 +27,11 @@ export default function ContactsList() {
     <Section title="Chats" isHidden={false} width="300px" flexShrink={0}>
       <FilterInput />
       <ul className={s.contactsList}>
-        {filteredContacts?.map(filteredContact => (
-          <ContactItem key={filteredContact.id} id={filteredContact.id} />
-        ))}
+        {filteredContacts
+          ? filteredContacts?.map(filteredContact => (
+              <ContactItem key={filteredContact.id} id={filteredContact.id} />
+            ))
+          : null}
       </ul>
     </Section>
   );

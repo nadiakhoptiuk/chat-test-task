@@ -7,43 +7,53 @@ import { useGetContactByIdQuery } from 'redux/contacts';
 import s from './MessageHistory.module.css';
 
 export default function MessagesHistory({ id, messageListRef }) {
-  const [messageList, setMessageList] = useState(messageListRef);
-  // const id = useSelector(selectedContactIdSelector);
-  const { data } = useGetContactByIdQuery(id);
-  console.log(messageListRef.current);
+  const [messageList, setMessageList] = useState(messageListRef?.current);
+  const { data } = useGetContactByIdQuery(id, {
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: true,
+  });
 
   useEffect(() => {
-    const messageHistory = [...data?.messages].sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
-    );
+    if (data && data?.length !== 0) {
+      const messageHistory = [...data?.messages].sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+      );
 
-    setMessageList(messageHistory);
+      setMessageList(messageHistory);
+    }
   }, [data, setMessageList]);
 
   return (
     <>
       <ul className={s.messageList}>
-        {messageList?.map(({ message, isSendedByMe, date }, index) => {
-          const newDate = format(new Date(date), 'PP, p');
+        {messageList
+          ? messageList?.map(({ message, isSendedByMe, date }, index) => {
+              const newDate = format(new Date(date), 'PP, p');
 
-          return (
-            <li
-              key={index}
-              className={isSendedByMe ? s.myMessage : s.interlocutorMessage}
-            >
-              <p
-                className={
-                  isSendedByMe ? s.myMessageText : s.interlocutorMessageText
-                }
-              >
-                {message}
-              </p>
-              <span className={s.messageDate}>{newDate}</span>
-            </li>
-          );
-        })}
+              return (
+                <li
+                  key={index}
+                  className={isSendedByMe ? s.myMessage : s.interlocutorMessage}
+                >
+                  <p
+                    className={
+                      isSendedByMe ? s.myMessageText : s.interlocutorMessageText
+                    }
+                  >
+                    {message}
+                  </p>
+                  <span className={s.messageDate}>{newDate}</span>
+                </li>
+              );
+            })
+          : null}
       </ul>
-      <FormSendMessage id={id} />
+      <FormSendMessage
+        id={id}
+        setMessageList={setMessageList}
+        data={data}
+        messageList={messageList}
+      />
     </>
   );
 }
