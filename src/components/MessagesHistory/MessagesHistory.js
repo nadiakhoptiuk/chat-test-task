@@ -1,8 +1,6 @@
 import FormSendMessage from 'components/FormSendMessage';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
 import { useGetContactByIdQuery } from 'redux/contacts';
 import s from './MessageHistory.module.css';
 
@@ -14,18 +12,36 @@ export default function MessagesHistory({ id, messageListRef }) {
   });
 
   useEffect(() => {
+    if (document?.getElementById('chat') === null) {
+      return;
+    } else {
+      function scrollToBottom(element) {
+        element.scroll({ top: element.scrollHeight, behavior: 'smooth' });
+      }
+      scrollToBottom(document.getElementById('chat'));
+    }
+  }, [id, messageList]);
+
+  useEffect(() => {
     if (data && data?.length !== 0) {
       const messageHistory = [...data?.messages].sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
 
       setMessageList(messageHistory);
+
+      // console.log(chatRef?.current);
+      // const scrollToBottom = () => {
+      //   if (!chatRef?.current) return;
+      //   chatRef?.current?.scrollTo(0, 0);
+      // };
+      // scrollToBottom();
     }
   }, [data, setMessageList]);
 
   return (
     <>
-      <ul className={s.messageList}>
+      <ul className={s.messageList} id="chat">
         {messageList
           ? messageList?.map(({ message, isSendedByMe, date }, index) => {
               const newDate = format(new Date(date), 'PP, p');

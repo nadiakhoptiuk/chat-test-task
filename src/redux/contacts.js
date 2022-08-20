@@ -6,22 +6,20 @@ export const contactsApi = createApi({
   reducerPath: 'contacts',
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
-    // prepareHeaders: (headers, { getState }) => {
-    //   const token = getState().auth.token;
-    //   if (token) {
-    //     headers.set('authorization', `Bearer ${token}`);
-    //   }
-    //   return headers;
-    // },
   }),
+  tagTypes: ['Contacts'],
   endpoints: builder => ({
     getContacts: builder.query({
-      query: () => 'contacts',
+      query: () => ({
+        url: 'contacts',
+      }),
+      providesTags: ['Contacts'],
     }),
     getContactById: builder.query({
       query: id => ({
         url: `contacts/${id}`,
       }),
+      providesTags: ['Contacts'],
     }),
     addMessageToContact: builder.mutation({
       query: ({ id, contact }) => ({
@@ -29,6 +27,7 @@ export const contactsApi = createApi({
         method: 'PUT',
         body: contact,
       }),
+      invalidatesTags: ['Contacts'],
     }),
   }),
 });

@@ -1,21 +1,11 @@
 import { GrSend } from 'react-icons/gr';
 import useFormFields from 'hooks/useFormFields';
 import s from './FormSendMessage.module.css';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
-import { useCallback, useEffect } from 'react';
-import getChuckResponce from 'service/chuckNorrisApi';
-import {
-  useAddMessageToContactMutation,
-  // useGetContactByIdQuery,
-} from 'redux/contacts';
+import { useCallback } from 'react';
+// import getChuckResponce from 'service/chuckNorrisApi';
+import { useAddMessageToContactMutation } from 'redux/contacts';
 
-export default function FormSendMessage({
-  id,
-  setMessageList,
-  data,
-  messageList,
-}) {
+export default function FormSendMessage({ id, setMessageList, data }) {
   const {
     state: message,
     setState: setMessage,

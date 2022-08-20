@@ -2,18 +2,10 @@ import { ContactInfoBox } from 'components/ContactInfoBox/ContactInfoBox';
 import MessagesHistory from 'components/MessagesHistory';
 import Section from 'components/Section';
 import { useEffect, useRef } from 'react';
-// import { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setSelectedContact } from 'redux/chat/chatActions';
-// import { selectedContactId } from 'redux/chat/chatSelectors';
-import {
-  // useAddMessageToContactMutation,
-  useGetContactByIdQuery,
-} from 'redux/contacts';
+import { useGetContactByIdQuery } from 'redux/contacts';
 
 export default function Chat({ id }) {
   const { data } = useGetContactByIdQuery(id);
-  console.log(id);
 
   useEffect(() => {
     if (!data || data?.messages?.length === 0) {
@@ -24,7 +16,6 @@ export default function Chat({ id }) {
       };
 
       const sortedArray = sortArrayByDate(data?.messages);
-
       messageListRef.current = sortedArray;
     }
   }, [data]);

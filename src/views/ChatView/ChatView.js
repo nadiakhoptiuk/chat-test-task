@@ -8,7 +8,6 @@ import Chat from 'components/Chat';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedContactId } from 'redux/chat/chatActions';
 import { useGetContactsQuery } from 'redux/contacts';
-// import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
 
 export default function ChatView() {
   const dispatch = useDispatch();
