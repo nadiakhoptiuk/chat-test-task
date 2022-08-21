@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  height: max-content;
 
   color: var(--main-text-color);
   background-color: var(--bg-color);
@@ -10,12 +11,12 @@
 }
 
 .contactItem:hover {
-  background-color: var(--selected-btn-color);
+  background-color: var(--border-color);
   cursor: pointer;
 }
 
 .contactBtn {
-  padding: 10px;
+  padding: 0;
   width: 100%;
 
   display: flex;
@@ -26,7 +27,7 @@
 
 .selectedBtn {
   composes: contactBtn;
-  background-color: var(--border-color);
+  background-color: var(--selected-btn-color);
 }
 
 .noneSelectedBtn {

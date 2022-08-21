@@ -24,7 +24,12 @@ export default function ContactsList() {
   const filteredContacts = filterContacts();
 
   return (
-    <Section title="Chats" isHidden={false} width="300px" flexShrink={0}>
+    <Section
+      title="Chats"
+      isHidden={false}
+      width={window.innerWidth < 768 ? '200px' : '300px'}
+      flexShrink={0}
+    >
       <FilterInput />
       <ul className={s.contactsList}>
         {filteredContacts

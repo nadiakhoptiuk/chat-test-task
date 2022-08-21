@@ -1,15 +1,36 @@
 .contactsList {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   flex-grow: 0;
   display: flex;
   justify-content: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   padding: 0;
-  height: 380px;
-  overflow-y: scroll;
+  height: 357px;
+  overflow-y: auto;
 
   list-style: none;
   border: 1px solid var(--border-color);
-  border-bottom: none;
+}
+
+@media screen and (min-width: 480px) {
+  .contactsList {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contactsList {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contactsList {
+    width: 100%;
+    max-width: 300px;
+  }
 }

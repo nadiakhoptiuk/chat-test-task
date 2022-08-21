@@ -24,6 +24,8 @@ export default function ChatView() {
     }
   }, [data, dispatch, isFetching, selectedContactId]);
 
+  console.log(window.innerWidth);
+
   return (
     <>
       <Container>

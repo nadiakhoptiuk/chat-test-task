@@ -2,10 +2,10 @@ import { useSelector } from 'react-redux';
 import Container from '../Container';
 import AuthNav from 'components/AuthNav';
 import UserMenu from 'components/UserMenu';
-import { getIsLoggedIn } from 'redux/auth/authSelectors';
-import logo from '../../images/Phonebook-icon-min.png';
-import s from './Header.module.css';
 import ThemeSwitch from 'components/ThemeSwitch/ThemeSwitch';
+import { getIsLoggedIn } from 'redux/auth/authSelectors';
+import sprite from '../../images/sprite.svg';
+import s from './Header.module.css';
 
 export default function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -16,14 +16,11 @@ export default function Header() {
         <div className={s.headerWrapper}>
           {isLoggedIn ? (
             <>
-              <img
-                src={logo}
-                alt="phonebook logo"
-                width={35}
-                height={35}
-                className={s.logo}
-              />
-              <h1 className={s.phonebookTitle}>Phonebook</h1>
+              <svg className={s.logo}>
+                <use href={`${sprite}#icon-chat-logo`}></use>
+              </svg>
+
+              <h1 className={s.chatTitle}>Viber</h1>
               <ThemeSwitch />
               <UserMenu />
             </>

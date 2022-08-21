@@ -6,20 +6,24 @@ export function ContactInfoBox({ id }) {
 
   return data ? (
     <>
-      <div className={s.avatarWrapper}>
-        <img
-          src={data?.avatar}
-          alt={`${data?.username} avatar`}
-          className={s.avatar}
-        />
-        <div
-          className={
-            data?.isOnline ? s.statusIndicatorOnline : s.statusIndicatorOffline
-          }
-        ></div>
-      </div>
+      <div className={s.contactInfoWrapper}>
+        <div className={s.avatarWrapper}>
+          <img
+            src={data?.avatar}
+            alt={`${data?.username} avatar`}
+            className={s.avatar}
+          />
+          <div
+            className={
+              data?.isOnline
+                ? s.statusIndicatorOnline
+                : s.statusIndicatorOffline
+            }
+          ></div>
+        </div>
 
-      <p className={s.contactName}>{data?.username}</p>
+        <p className={s.contactName}>{data?.username}</p>
+      </div>
     </>
   ) : null;
 }
