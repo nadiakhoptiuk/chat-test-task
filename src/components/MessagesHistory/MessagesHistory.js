@@ -29,13 +29,6 @@ export default function MessagesHistory({ id, messageListRef }) {
       );
 
       setMessageList(messageHistory);
-
-      // console.log(chatRef?.current);
-      // const scrollToBottom = () => {
-      //   if (!chatRef?.current) return;
-      //   chatRef?.current?.scrollTo(0, 0);
-      // };
-      // scrollToBottom();
     }
   }, [data, setMessageList]);
 

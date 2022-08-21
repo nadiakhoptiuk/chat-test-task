@@ -1,11 +1,16 @@
 import { GrSend } from 'react-icons/gr';
 import useFormFields from 'hooks/useFormFields';
 import s from './FormSendMessage.module.css';
-import { useCallback } from 'react';
-// import getChuckResponce from 'service/chuckNorrisApi';
+import { useCallback, useEffect } from 'react';
+import getChuckResponce from 'service/chuckNorrisApi';
 import { useAddMessageToContactMutation } from 'redux/contacts';
 
-export default function FormSendMessage({ id, setMessageList, data }) {
+export default function FormSendMessage({
+  id,
+  setMessageList,
+  data,
+  messageList,
+}) {
   const {
     state: message,
     setState: setMessage,
@@ -42,25 +47,36 @@ export default function FormSendMessage({ id, setMessageList, data }) {
     setMessage('');
   };
 
-  // useEffect(() => {
-  //   if (!messageList || !messageList[messageList?.length - 1].isSendedByMe) {
-  //     console.log('return');
+  useEffect(() => {
+    if (!messageList) {
+      return;
+    }
 
-  //     return;
-  //   } else {
-  //     console.log('set time out');
-  //     setTimeout(() => {
-  //       getChuckResponce()
-  //         .then(message => {
-  //           generateNewMessageList(message, false);
-  //         })
-  //         .catch(error => {
-  //           // handle error
-  //           console.log(error);
-  //         });
-  //     }, 10000);
-  //   }
-  // }, [generateNewMessageList, messageList, setMessageList]);
+    const dateNow = new Date().getTime();
+    const lastMessage = messageList[messageList?.length - 1];
+    const lastMessageDate = new Date(lastMessage?.date).getTime();
+
+    if (!lastMessage?.isSendedByMe || dateNow - lastMessageDate > 10000) {
+      return;
+    } else {
+      const timeOut = setTimeout(() => {
+        getChuckResponce()
+          .then(message => {
+            generateNewMessageList(message, false);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, 10000);
+
+      return () => {
+        console.log('cleared');
+        clearTimeout(timeOut);
+      };
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messageList]);
 
   return (
     <div className={s.formWrapper}>
