@@ -13,12 +13,31 @@ export const contactsApi = createApi({
       query: () => ({
         url: 'contacts',
       }),
+      transformResponse: response =>
+        [...response]
+          .map(obj => {
+            const sortedMessages = [...obj.messages].sort(
+              (a, b) => new Date(a.date) - new Date(b.date)
+            );
+            return { ...obj, messages: sortedMessages };
+          })
+          .sort(
+            (a, b) =>
+              new Date(b.messages[b.messages.length - 1].date) -
+              new Date(a.messages[a.messages.length - 1].date)
+          ),
       providesTags: ['Contacts'],
     }),
     getContactById: builder.query({
       query: id => ({
         url: `contacts/${id}`,
       }),
+      transformResponse: response => {
+        const sortedMessages = [...response.messages].sort(
+          (a, b) => new Date(a.date) - new Date(b.date)
+        );
+        return { ...response, messages: sortedMessages };
+      },
       providesTags: ['Contacts'],
     }),
     addMessageToContact: builder.mutation({

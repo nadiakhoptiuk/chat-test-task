@@ -24,11 +24,7 @@ export default function MessagesHistory({ id, messageListRef }) {
 
   useEffect(() => {
     if (data && data?.length !== 0) {
-      const messageHistory = [...data?.messages].sort(
-        (a, b) => new Date(a.date) - new Date(b.date)
-      );
-
-      setMessageList(messageHistory);
+      setMessageList(data?.messages);
     }
   }, [data, setMessageList]);
 

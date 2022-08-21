@@ -41,9 +41,7 @@ export default function FormSendMessage({
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-
     generateNewMessageList(message, true);
-
     setMessage('');
   };
 
@@ -70,11 +68,9 @@ export default function FormSendMessage({
       }, 10000);
 
       return () => {
-        console.log('cleared');
         clearTimeout(timeOut);
       };
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messageList]);
 
