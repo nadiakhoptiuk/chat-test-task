@@ -1,13 +1,13 @@
 .contactsList {
   width: 100%;
   max-width: 200px;
+  height: 390px;
   flex-grow: 0;
   display: flex;
   justify-content: center;
   align-content: flex-start;
   flex-wrap: wrap;
   padding: 0;
-  height: 357px;
   overflow-y: auto;
 
   list-style: none;

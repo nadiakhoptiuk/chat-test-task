@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { resetError } from './authActions';
-import { register, logIn, logOut, refreshCurrentUser } from './authOperations';
+import { register, logIn, logOut, logInWithGoogle } from './authOperations';
 
 const initialState = {
-  user: { name: null, email: null },
-  token: null,
+  user: {
+    email: '',
+    token: null,
+  },
   isLoggedIn: false,
-  isRefreshingUser: false,
   error: null,
 };
 
@@ -15,36 +16,31 @@ export const authSlice = createSlice({
   initialState,
   extraReducers: {
     [register.fulfilled]: (state, { payload }) => {
+      state.user = payload;
       state.error = null;
-      state.user = payload.user;
-      state.token = payload.token;
       state.isLoggedIn = true;
     },
-    [register.rejected]: (state, { payload }) => {
-      state.error = payload;
+    [register.rejected]: (state, _) => {
+      state.error = 'Something went wrong. Try again.';
     },
     [logIn.fulfilled]: (state, { payload }) => {
       state.error = null;
-      state.user = payload.user;
-      state.token = payload.token;
+      state.user = payload;
       state.isLoggedIn = true;
     },
-    [logIn.rejected]: (state, { payload }) => {
-      state.error = payload;
+    [logIn.rejected]: (state, _) => {
+      state.error = 'Wrong email or password. Try again or register.';
+    },
+    [logInWithGoogle.fulfilled]: (state, { payload }) => {
+      state.error = null;
+      state.user = payload;
+      state.isLoggedIn = true;
+    },
+    [logInWithGoogle.rejected]: (state, _) => {
+      state.error = 'Wrong email or password. Try again or register.';
     },
     [logOut.fulfilled]: () => {
       return initialState;
-    },
-    [refreshCurrentUser.pending]: state => {
-      state.isRefreshingUser = true;
-    },
-    [refreshCurrentUser.fulfilled]: (state, { payload }) => {
-      state.user = payload;
-      state.isLoggedIn = true;
-      state.isRefreshingUser = false;
-    },
-    [refreshCurrentUser.rejected]: state => {
-      state.isRefreshingUser = false;
     },
     [resetError]: (state, _) => {
       state.error = null;

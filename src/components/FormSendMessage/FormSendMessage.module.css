@@ -22,6 +22,11 @@
   border-radius: 10px;
 }
 
+.input:hover,
+.input:focus {
+  border-color: var(--accent-color);
+}
+
 .formBtn {
   position: absolute;
   right: 0;

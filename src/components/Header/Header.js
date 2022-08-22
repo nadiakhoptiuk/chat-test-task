@@ -20,7 +20,7 @@ export default function Header() {
                 <use href={`${sprite}#icon-chat-logo`}></use>
               </svg>
 
-              <h1 className={s.chatTitle}>Viber</h1>
+              <h1 className={s.chatTitle}>Messenger</h1>
               <ThemeSwitch />
               <UserMenu />
             </>

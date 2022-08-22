@@ -1,10 +1,9 @@
 @import 'modern-normalize/modern-normalize.css';
 
 :root {
-  --online-indicator-color: #20661e;
+  --online-indicator-color: #2f882c;
   --offline-indicator-color: #a1a1a1;
-  --main-text-color: #000000;
-  /* --selected-btn-color: #e4e3e3; */
+  --accent-color: #ffc61b;
 }
 
 html[theme-type='light'] {
@@ -13,12 +12,9 @@ html[theme-type='light'] {
 
   --border-color: #bdbdbd;
   --border-color-v2: #a8a7a7;
-  --warning-color: #d44444b6;
-  --edit-color: #d4b244;
-  --accent-color: #2e7fcf;
+  --accent-color: #ffc61b;
+  --text-accent-color: #b3880a;
   --selected-btn-color: #d3d2d2;
-
-  --icon-color: rgba(0, 0, 0, 0.54);
 }
 
 html[theme-type='dark'] {
@@ -27,12 +23,8 @@ html[theme-type='dark'] {
 
   --border-color: #4e4d4d;
   --border-color-v2: #29456e;
-  --warning-color: #d44444b6;
-  --edit-color: #d4b244;
-  --accent-color: #56a0eb;
+  --accent-color: #fee187;
   --selected-btn-color: #141414;
-
-  --icon-color: rgba(119, 118, 118, 0.54);
 }
 
 body {
@@ -133,12 +125,5 @@ button {
   .sectionTitle {
     font-weight: 600;
     font-size: 22px;
-    margin-bottom: 30px;
-  }
-
-  .sectionTitle {
-    margin-bottom: 40px;
-    font-weight: 600;
-    font-size: 25px;
   }
 }

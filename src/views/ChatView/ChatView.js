@@ -24,11 +24,9 @@ export default function ChatView() {
     }
   }, [data, dispatch, isFetching, selectedContactId]);
 
-  console.log(window.innerWidth);
-
   return (
     <>
-      <Container>
+      <Container style={{ display: 'flex' }}>
         <ContactsList />
         <Chat id={selectedContactId} />
       </Container>

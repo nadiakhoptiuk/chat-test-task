@@ -22,23 +22,23 @@ const LogInView = lazy(() =>
 );
 
 export default function App() {
-  const dispatch = useDispatch();
-  const isRefreshingUser = useSelector(getIsRefreshingUser);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshCurrentUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshCurrentUser());
+  // }, [dispatch]);
 
-  return isRefreshingUser ? (
-    <Watch
-      height={80}
-      width={80}
-      radius={45}
-      color="#1a75cfb3"
-      wrapperClass="mainLoader"
-      ariaLabel="loading-indicator"
-    />
-  ) : (
+  // return isRefreshingUser ? (
+  //   <Watch
+  //     height={80}
+  //     width={80}
+  //     radius={45}
+  //     color="#1a75cfb3"
+  //     wrapperClass="mainLoader"
+  //     ariaLabel="loading-indicator"
+  //   />
+  // ) : (
+  return (
     <>
       <Header />
 

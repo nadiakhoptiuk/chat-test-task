@@ -1,69 +1,107 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-const token = {
-  set(token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  },
-
-  unset() {
-    axios.defaults.headers.common['Authorization'] = '';
-  },
-};
+import { firebaseConfig } from 'configuration.js/fbConfig';
+import {
+  auth,
+  provider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signOut,
+} from 'configuration.js/fbConfig';
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (user, { rejectWithValue }) => {
+  async ({ email, password }, thunkApi) => {
     try {
-      const response = await axios.post('/users/signup', user);
-      token.set(response.data.token);
-      return response.data;
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      // navigateUser();
+      return { email: user.email, token: user.accessToken };
     } catch (error) {
-      return rejectWithValue('Something went wrong. Please try again.');
+      const errorMessage = error.message;
+      return thunkApi.rejectWithValue(errorMessage);
     }
   }
 );
 
 export const logIn = createAsyncThunk(
   'auth/login',
-  async (user, { rejectWithValue }) => {
+  async ({ email, password }, thunkApi) => {
     try {
-      const response = await axios.post('/users/login', user);
-      token.set(response.data.token);
-      return response.data;
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      return { email: user.email, token: user.accessToken };
     } catch (error) {
-      return rejectWithValue('Something went wrong. Please try again.');
+      const errorMessage = error.message;
+      return thunkApi.rejectWithValue(errorMessage);
     }
   }
 );
+
+export const logInWithGoogle = createAsyncThunk(
+  'auth/loginWithGoogle',
+  async (_, thunkApi) => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+
+      return { email: user.email, token: token };
+    } catch (error) {
+      const errorMessage = error.message;
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+signInWithPopup(auth, provider)
+  .then(result => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  })
+  .catch(error => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
 
 export const logOut = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
-    try {
-      await axios.post('/users/logout');
-      token.unset();
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+    await signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch(error => {
+        //
+      });
   }
 );
 
-export const refreshCurrentUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (!persistedToken) {
-      return thunkAPI.rejectWithValue();
-    }
-    token.set(persistedToken);
-    try {
-      const { data } = await axios.get('/users/current');
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// onAuthStateChanged(auth, user => {
+//   if (user) {
+//     const uid = user.uid;
+//   } else {
+//     // User is signed out
+//   }
+// });
