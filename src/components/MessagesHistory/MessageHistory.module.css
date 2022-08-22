@@ -7,8 +7,7 @@
 }
 
 .message {
-  width: max-content;
-  max-width: 65%;
+  width: 50%;
 }
 
 .myMessage {
