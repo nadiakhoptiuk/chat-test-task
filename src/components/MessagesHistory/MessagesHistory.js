@@ -1,7 +1,8 @@
-import FormSendMessage from 'components/FormSendMessage';
-import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 import { useGetContactByIdQuery } from 'redux/contacts';
+import FormSendMessage from 'components/FormSendMessage';
 import s from './MessageHistory.module.css';
 
 export default function MessagesHistory({ id, messageListRef }) {
@@ -62,3 +63,14 @@ export default function MessagesHistory({ id, messageListRef }) {
     </>
   );
 }
+
+MessagesHistory.propTypes = {
+  id: PropTypes.string,
+  messageListRef: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      isSendedByMe: PropTypes.bool.isRequired,
+    })
+  ),
+};

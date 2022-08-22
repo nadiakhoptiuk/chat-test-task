@@ -1,7 +1,7 @@
 .contactInfoWrapper {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 10px;
 }
 
 .avatarWrapper {
@@ -12,6 +12,9 @@
 }
 
 .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   width: 40px;
 }
@@ -40,6 +43,14 @@
   background-color: transparent;
   background-color: var(--bg-color);
   border: 2px solid var(--offline-indicator-color);
+}
+
+@media screen and (min-width: 768px) {
+  .contactInfoWrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+  }
 }
 
 @media screen and (min-width: 1024px) {

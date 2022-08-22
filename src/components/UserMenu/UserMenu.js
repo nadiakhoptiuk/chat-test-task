@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { logOut } from 'redux/auth/authOperations';
 import { getUserName } from 'redux/auth/authSelectors';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
-import { logOut } from 'redux/auth/authOperations';
 import s from './UserMenu.module.css';
 
 export default function UserMenu() {

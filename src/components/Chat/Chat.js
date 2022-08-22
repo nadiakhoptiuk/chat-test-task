@@ -1,8 +1,9 @@
+import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { useGetContactByIdQuery } from 'redux/contacts';
 import { ContactInfoBox } from 'components/ContactInfoBox/ContactInfoBox';
 import MessagesHistory from 'components/MessagesHistory';
 import Section from 'components/Section';
-import { useEffect, useRef } from 'react';
-import { useGetContactByIdQuery } from 'redux/contacts';
 
 export default function Chat({ id }) {
   const { data } = useGetContactByIdQuery(id);
@@ -29,3 +30,7 @@ export default function Chat({ id }) {
     </Section>
   );
 }
+
+Chat.propTypes = {
+  id: PropTypes.string,
+};

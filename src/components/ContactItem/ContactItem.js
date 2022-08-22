@@ -1,10 +1,10 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import s from './ContactItem.module.css';
-import { ContactInfoBox } from 'components/ContactInfoBox/ContactInfoBox';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
+import PropTypes from 'prop-types';
 import { setSelectedContactId } from 'redux/chat/chatActions';
+import { selectedContactIdSelector } from 'redux/chat/chatSelectors';
+import { ContactInfoBox } from 'components/ContactInfoBox/ContactInfoBox';
+import s from './ContactItem.module.css';
 
 export default function ContactItem({ id }) {
   const selectedContactId = useSelector(selectedContactIdSelector);
@@ -25,29 +25,10 @@ export default function ContactItem({ id }) {
       >
         <ContactInfoBox id={id} />
       </button>
-
-      {/* {isLoading &
-        (
-          <LoadingButton loading variant="outlined" className={s.btnDelete}>
-            Submit
-          </LoadingButton>
-        )} */}
     </li>
   );
 }
 
-// ContactItem.propTypes = {
-//   contactData: PropTypes.shape({
-//     username: PropTypes.string.isRequired,
-//     avatar: PropTypes.string.isRequired,
-//     isOnline: PropTypes.bool.isRequired,
-//     messages: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         message: PropTypes.string.isRequired,
-//         date: PropTypes.string.isRequired,
-//         isSendedByMe: PropTypes.bool.isRequired,
-//       })
-//     ),
-//     id: PropTypes.string.isRequired,
-//   }),
-// };
+ContactItem.propTypes = {
+  id: PropTypes.string,
+};

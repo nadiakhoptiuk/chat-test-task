@@ -5,12 +5,12 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import useFormFields from 'hooks/useFormFields';
-import Section from 'components/Section';
 import { register } from 'redux/auth/authOperations';
-import { getError } from 'redux/auth/authSelectors';
 import { resetError } from 'redux/auth/authActions';
-import s from './RegisterView.module.css';
+import { getError } from 'redux/auth/authSelectors';
+import Section from 'components/Section';
 import Container from 'components/Container';
+import s from './RegisterView.module.css';
 
 export default function RegisterView() {
   const dispatch = useDispatch();

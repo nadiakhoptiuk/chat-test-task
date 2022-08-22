@@ -1,18 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 import SendIcon from '@mui/icons-material/Send';
-import Section from 'components/Section';
+import Stack from '@mui/material/Stack';
 import useFormFields from 'hooks/useFormFields';
 import { logIn, logInWithGoogle } from 'redux/auth/authOperations';
+import { resetError } from 'redux/auth/authActions';
 import { getError } from 'redux/auth/authSelectors';
+import Container from 'components/Container';
+import Section from 'components/Section';
 import sprite from '../../images/sprite.svg';
 import s from './LogInView.module.css';
-
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
-import { resetError } from 'redux/auth/authActions';
-import Container from 'components/Container';
 
 export default function LogInView() {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export default function LogInView() {
     formReset();
   };
 
-  const handleGoogleAuth = evt => {
+  const handleGoogleAuth = () => {
     dispatch(logInWithGoogle({ email: userEmail, password: userPassword }));
   };
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateFilter } from 'redux/filter/filterActions';
+import { useGetContactsQuery } from 'redux/contacts';
 import { filterSelector } from 'redux/filter/filterSelector';
 import s from './FilterInput.module.css';
-import { useGetContactsQuery } from 'redux/contacts';
 
 export default function FilterInput() {
   const { data } = useGetContactsQuery('', {

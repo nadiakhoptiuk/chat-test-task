@@ -1,13 +1,11 @@
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-// import { Watch } from 'react-loader-spinner';
-// import Section from 'components/Section';
-import Container from 'components/Container';
-import ContactsList from 'components/ContactsList';
 import { useEffect } from 'react';
-import Chat from 'components/Chat';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedContactId } from 'redux/chat/chatActions';
 import { useGetContactsQuery } from 'redux/contacts';
+import Container from 'components/Container';
+import ContactsList from 'components/ContactsList';
+import Chat from 'components/Chat';
 
 export default function ChatView() {
   const dispatch = useDispatch();

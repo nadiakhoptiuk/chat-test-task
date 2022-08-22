@@ -1,23 +1,26 @@
 .messageList {
   width: 100%;
-  padding: 10px 15px;
+  padding: 5px 10px;
 
   overflow-y: scroll;
   height: 390px;
 }
 
 .message {
-  width: 50%;
+  width: max-content;
+  max-width: 65%;
 }
 
 .myMessage {
   composes: message;
   margin-left: auto;
+  text-align: right;
 }
 
 .interlocutorMessage {
   composes: message;
   margin-right: auto;
+  text-align: left;
 }
 
 .messageText {
@@ -32,11 +35,13 @@
 .myMessageText {
   composes: messageText;
   background-color: var(--border-color);
+  text-align: right;
 }
 
 .interlocutorMessageText {
   composes: messageText;
   background-color: var(--border-color-v2);
+  text-align: left;
 }
 
 .messageDate {

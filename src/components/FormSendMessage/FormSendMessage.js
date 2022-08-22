@@ -1,9 +1,10 @@
+import { useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import getChuckResponce from 'service/chuckNorrisApi';
 import { GrSend } from 'react-icons/gr';
+import { useAddMessageToContactMutation } from 'redux/contacts';
 import useFormFields from 'hooks/useFormFields';
 import s from './FormSendMessage.module.css';
-import { useCallback, useEffect } from 'react';
-import getChuckResponce from 'service/chuckNorrisApi';
-import { useAddMessageToContactMutation } from 'redux/contacts';
 
 export default function FormSendMessage({
   id,
@@ -92,3 +93,20 @@ export default function FormSendMessage({
     </div>
   );
 }
+
+FormSendMessage.propTypes = {
+  id: PropTypes.string,
+  setMessageList: PropTypes.func,
+  data: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    isOnline: PropTypes.bool.isRequired,
+    messages: PropTypes.arrayOf(
+      PropTypes.shape({
+        message: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        isSendedByMe: PropTypes.bool.isRequired,
+      }).isRequired
+    ),
+  }),
+};

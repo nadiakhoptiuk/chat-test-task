@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import ContactItem from 'components/ContactItem';
+import { useGetContactsQuery } from 'redux/contacts';
 import { filterSelector } from 'redux/filter/filterSelector';
-import s from './ContactsList.module.css';
+import ContactItem from 'components/ContactItem';
 import FilterInput from 'components/FilterInput';
 import Section from 'components/Section';
-import { useGetContactsQuery } from 'redux/contacts';
+import s from './ContactsList.module.css';
 
 export default function ContactsList() {
   const { data } = useGetContactsQuery();
@@ -27,7 +27,7 @@ export default function ContactsList() {
     <Section
       title="Chats"
       isHidden={false}
-      width={window.innerWidth < 768 ? '200px' : '300px'}
+      width={window.innerWidth < 768 ? '150px' : '300px'}
       flexShrink={0}
     >
       <FilterInput />

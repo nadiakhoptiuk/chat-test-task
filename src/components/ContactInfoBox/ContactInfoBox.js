@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useGetContactByIdQuery } from 'redux/contacts';
 import s from './ContactInfoBox.module.css';
 
@@ -27,3 +28,7 @@ export function ContactInfoBox({ id }) {
     </>
   ) : null;
 }
+
+ContactInfoBox.propTypes = {
+  id: PropTypes.string,
+};

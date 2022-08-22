@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from './Container.module.css';
 
 export default function Container({ style, children }) {
@@ -8,3 +9,7 @@ export default function Container({ style, children }) {
     </div>
   );
 }
+
+Container.propTypes = {
+  style: PropTypes.object,
+};

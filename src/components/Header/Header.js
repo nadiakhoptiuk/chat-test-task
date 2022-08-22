@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'redux/auth/authSelectors';
 import Container from '../Container';
 import AuthNav from 'components/AuthNav';
 import UserMenu from 'components/UserMenu';
 import ThemeSwitch from 'components/ThemeSwitch/ThemeSwitch';
-import { getIsLoggedIn } from 'redux/auth/authSelectors';
 import sprite from '../../images/sprite.svg';
 import s from './Header.module.css';
 

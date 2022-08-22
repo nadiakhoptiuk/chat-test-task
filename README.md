@@ -1,11 +1,11 @@
-# Phonebook
+# Messenger
 
-Phonebook is a personal web application with contacts list. It allows to save
-phone contacts to personal database, edit and delete contacts from it. User
-registration/authorization and database is implemented with Swagger. Phonebook
-is adapted to 3 types of screen: mobile, tablet and desktop.
+Messenger is a personal web application with contacts list and chats. Fake
+interlocutor send you response 10 seconds after your message. Authorization and
+registration done with Firebase. User can also sign in with Google. Messenger is
+adapted to 2 types of screen: tablet and desktop.
 
-[Hosted application link](https://nadiakhoptiuk.github.io/goit-react-hw-08-phonebook/)
+[Hosted application link](https://nadiakhoptiuk.github.io/chat-test-task/)
 
 ## Used technologies
 
@@ -24,7 +24,8 @@ is adapted to 3 types of screen: mobile, tablet and desktop.
 
 ### Backend:
 
-![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+[Chuck Norris API](https://api.chucknorris.io/)
 
 ##
 
