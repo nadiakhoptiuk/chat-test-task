@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/chat-test-task/static/css/main.e21cabc6.css",
-    "main.js": "/chat-test-task/static/js/main.83c21b6b.js",
-    "chat.css": "/chat-test-task/static/css/chat.22626701.chunk.css",
-    "chat.js": "/chat-test-task/static/js/chat.acff2c49.chunk.js",
+    "main.css": "/chat-test-task/static/css/main.377e474b.css",
+    "main.js": "/chat-test-task/static/js/main.9a3204ba.js",
+    "chat.css": "/chat-test-task/static/css/chat.50339f86.chunk.css",
+    "chat.js": "/chat-test-task/static/js/chat.2eb88dc8.chunk.js",
     "registration.css": "/chat-test-task/static/css/registration.6cb39f47.chunk.css",
-    "registration.js": "/chat-test-task/static/js/registration.8ee7b362.chunk.js",
-    "authorization.css": "/chat-test-task/static/css/authorization.21cac5f3.chunk.css",
-    "authorization.js": "/chat-test-task/static/js/authorization.bf6c9147.chunk.js",
-    "static/js/640.b7e4bc68.chunk.js": "/chat-test-task/static/js/640.b7e4bc68.chunk.js",
-    "static/js/278.a5c92a57.chunk.js": "/chat-test-task/static/js/278.a5c92a57.chunk.js",
-    "static/media/sprite.svg": "/chat-test-task/static/media/sprite.aa724da22108e9f6fa4cfd073c3d2a41.svg",
+    "registration.js": "/chat-test-task/static/js/registration.8890990b.chunk.js",
+    "authorization.css": "/chat-test-task/static/css/authorization.867c6c0e.chunk.css",
+    "authorization.js": "/chat-test-task/static/js/authorization.e5b3df47.chunk.js",
+    "static/js/181.0f301ce3.chunk.js": "/chat-test-task/static/js/181.0f301ce3.chunk.js",
+    "static/js/72.f02b3f59.chunk.js": "/chat-test-task/static/js/72.f02b3f59.chunk.js",
+    "static/media/sprite.svg": "/chat-test-task/static/media/sprite.1e6c20b89aeb8dfb0b697d62afae017d.svg",
     "index.html": "/chat-test-task/index.html",
-    "main.e21cabc6.css.map": "/chat-test-task/static/css/main.e21cabc6.css.map",
-    "main.83c21b6b.js.map": "/chat-test-task/static/js/main.83c21b6b.js.map",
-    "chat.22626701.chunk.css.map": "/chat-test-task/static/css/chat.22626701.chunk.css.map",
-    "chat.acff2c49.chunk.js.map": "/chat-test-task/static/js/chat.acff2c49.chunk.js.map",
+    "main.377e474b.css.map": "/chat-test-task/static/css/main.377e474b.css.map",
+    "main.9a3204ba.js.map": "/chat-test-task/static/js/main.9a3204ba.js.map",
+    "chat.50339f86.chunk.css.map": "/chat-test-task/static/css/chat.50339f86.chunk.css.map",
+    "chat.2eb88dc8.chunk.js.map": "/chat-test-task/static/js/chat.2eb88dc8.chunk.js.map",
     "registration.6cb39f47.chunk.css.map": "/chat-test-task/static/css/registration.6cb39f47.chunk.css.map",
-    "registration.8ee7b362.chunk.js.map": "/chat-test-task/static/js/registration.8ee7b362.chunk.js.map",
-    "authorization.21cac5f3.chunk.css.map": "/chat-test-task/static/css/authorization.21cac5f3.chunk.css.map",
-    "authorization.bf6c9147.chunk.js.map": "/chat-test-task/static/js/authorization.bf6c9147.chunk.js.map",
-    "640.b7e4bc68.chunk.js.map": "/chat-test-task/static/js/640.b7e4bc68.chunk.js.map",
-    "278.a5c92a57.chunk.js.map": "/chat-test-task/static/js/278.a5c92a57.chunk.js.map"
+    "registration.8890990b.chunk.js.map": "/chat-test-task/static/js/registration.8890990b.chunk.js.map",
+    "authorization.867c6c0e.chunk.css.map": "/chat-test-task/static/css/authorization.867c6c0e.chunk.css.map",
+    "authorization.e5b3df47.chunk.js.map": "/chat-test-task/static/js/authorization.e5b3df47.chunk.js.map",
+    "181.0f301ce3.chunk.js.map": "/chat-test-task/static/js/181.0f301ce3.chunk.js.map",
+    "72.f02b3f59.chunk.js.map": "/chat-test-task/static/js/72.f02b3f59.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e21cabc6.css",
-    "static/js/main.83c21b6b.js"
+    "static/css/main.377e474b.css",
+    "static/js/main.9a3204ba.js"
   ]
 }
