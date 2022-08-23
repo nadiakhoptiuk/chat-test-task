@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chat-test-task/static/css/main.377e474b.css",
-    "main.js": "/chat-test-task/static/js/main.864be2d2.js",
-    "chat.css": "/chat-test-task/static/css/chat.204e5ae1.chunk.css",
+    "main.js": "/chat-test-task/static/js/main.0fe08168.js",
+    "chat.css": "/chat-test-task/static/css/chat.1c7d49b0.chunk.css",
     "chat.js": "/chat-test-task/static/js/chat.2eb88dc8.chunk.js",
     "registration.css": "/chat-test-task/static/css/registration.6cb39f47.chunk.css",
     "registration.js": "/chat-test-task/static/js/registration.8890990b.chunk.js",
@@ -13,8 +13,8 @@
     "static/media/sprite.svg": "/chat-test-task/static/media/sprite.1e6c20b89aeb8dfb0b697d62afae017d.svg",
     "index.html": "/chat-test-task/index.html",
     "main.377e474b.css.map": "/chat-test-task/static/css/main.377e474b.css.map",
-    "main.864be2d2.js.map": "/chat-test-task/static/js/main.864be2d2.js.map",
-    "chat.204e5ae1.chunk.css.map": "/chat-test-task/static/css/chat.204e5ae1.chunk.css.map",
+    "main.0fe08168.js.map": "/chat-test-task/static/js/main.0fe08168.js.map",
+    "chat.1c7d49b0.chunk.css.map": "/chat-test-task/static/css/chat.1c7d49b0.chunk.css.map",
     "chat.2eb88dc8.chunk.js.map": "/chat-test-task/static/js/chat.2eb88dc8.chunk.js.map",
     "registration.6cb39f47.chunk.css.map": "/chat-test-task/static/css/registration.6cb39f47.chunk.css.map",
     "registration.8890990b.chunk.js.map": "/chat-test-task/static/js/registration.8890990b.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.377e474b.css",
-    "static/js/main.864be2d2.js"
+    "static/js/main.0fe08168.js"
   ]
 }
