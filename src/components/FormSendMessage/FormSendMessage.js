@@ -82,7 +82,7 @@ export default function FormSendMessage({
           type="text"
           name="message"
           className={s.input}
-          placeholder="Type your message..."
+          placeholder="Type your message... and wait 10 seconds for answer :)"
           value={message}
           onChange={handleMessageChange}
         />
